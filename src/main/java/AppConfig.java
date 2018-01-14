@@ -5,10 +5,19 @@ import com.pluralsight.service.CustomerServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @ComponentScan({"com.pluralsight"})
+@PropertySource("app.properties")
 public class AppConfig {
+
+    // This method simply loads the properties file defined about and makes it available
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer getPropertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
   //  @Bean(name = "customerService")
   //  public CustomerService getCustomerService() {
